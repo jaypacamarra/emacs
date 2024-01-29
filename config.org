@@ -224,7 +224,7 @@
 (jay/leader-keys
   "s" '(:ignore t :wk "Searching")
   ;; Searching
-  "s b" '(swiper-isearch :wk "Search buffer")
+  "s b" '(swiper :wk "Search buffer")
   "s f" '(fzf-find-file :wk "Search file"))
 
 (jay/leader-keys
