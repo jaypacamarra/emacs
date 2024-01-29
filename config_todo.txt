@@ -1,6 +1,8 @@
 Jay's emacs config TODO
 
-[] change powerline colors to something better
+[ ] Fix curcly brace weird behaviour
+
+[-] change powerline colors to something better
 [x] bind leader+gg to magit
 [x] bind git timemachine bindings for toggle
 [x] bind evil-mode

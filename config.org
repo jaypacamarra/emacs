@@ -577,7 +577,6 @@ Let's make GNU Emacs look a little better.
 A git manager for the emacs user
 #+begin_src emacs-lisp
 (use-package magit)
-(use-package evil-magit)
 #+end_src
 
 ** GIT TIME MACHINE
