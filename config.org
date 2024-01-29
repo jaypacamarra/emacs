@@ -171,6 +171,7 @@
   "f s" '(save-buffer :wk "File save")
   "f t" '(counsel-tramp :wk "File remote edit with tramp")
   "f p" '(copy-buffer-directory-to-clipboard :wk "Copy current file path to clipboard")
+  "f P" '(copy-project-root-to-clipboard :wk "Copy project file path to clipboard")
   "TAB TAB" '(comment-line :wk "Comment lines"))
 
 (jay/leader-keys
@@ -352,6 +353,7 @@ one, an error is signaled."
 #+end_src
 
 * CLIPBOARD
+Copy directory of current buffer to clipboard
 #+begin_src emacs-lisp
 (defun copy-buffer-directory-to-clipboard ()
   "Copy the directory of the current buffer to the clipboard."
@@ -359,6 +361,16 @@ one, an error is signaled."
   (let ((directory (file-name-directory (or buffer-file-name default-directory))))
     (kill-new directory)
     (message "Directory copied to clipboard: %s" directory)))
+#+end_src
+
+Copy directory of project root to clipboard
+#+begin_src emacs-lisp
+(defun copy-project-root-to-clipboard ()
+  "Copy the root directory of the current project to the clipboard."
+  (interactive)
+  (when-let ((project-root (projectile-project-root)))
+    (kill-new project-root)
+    (message "Project root directory copied to clipboard: %s" project-root)))
 #+end_src
 
 * COMPANY
