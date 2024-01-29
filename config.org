@@ -712,12 +712,6 @@ This is just an example of how to create a simple function in Emacs.  Use this f
 #+end_src
 
 * TREE SITTER
-;; tree sitter package
-;;#+begin_src emacs-lisp
-;;(use-package tree-sitter)
-;;(use-package tree-sitter-langs)
-;;#+end_src
-
 ;; tree sitter from emacs build
 #+begin_src emacs-lisp
 (global-font-lock-mode t)
