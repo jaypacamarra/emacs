@@ -1,3 +1,4 @@
+;;(telephone-line-mode 1)
 (set-default 'truncate-lines t)
 ;;no backup files
 (setq make-backup-files nil)

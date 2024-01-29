@@ -10,7 +10,8 @@
   - [[#evil-mode][EVIL MODE]]
   - [[#general-keybindings][GENERAL KEYBINDINGS]]
 - [[#all-the-icons][ALL THE ICONS]]
-- [[#buffer-move][BUFFER-MOVE]]
+- [[#navigation][NAVIGATION]]
+  - [[#buffer-move][BUFFER-MOVE]]
 - [[#countel-tramp][COUNTEL-TRAMP]]
 - [[#company][COMPANY]]
 - [[#diminish][DIMINISH]]
@@ -229,6 +230,7 @@
 (jay/leader-keys
   "o" '(:ignore t :wk "Open")    
   ;; Opening
+  "o p" '(org-open-at-point :wk "Open org link")
   "o t" '(vterm :wk "Open terminal"))
 
 )
@@ -249,7 +251,9 @@ This is an icon set that can be used with dashboard, dired, ibuffer and other Em
   :hook (dired-mode . (lambda () (all-the-icons-dired-mode t))))
 #+end_src
 
-* BUFFER-MOVE
+* NAVIGATION
+
+** BUFFER-MOVE
 Creating some functions to allow us to easily move windows (splits) around.  The following block of code was taken from buffer-move.el found on the EmacsWiki:
 https://www.emacswiki.org/emacs/buffer-move.el
 
@@ -490,17 +494,21 @@ Let's make GNU Emacs look a little better.
 
 ** MODELINE
 #+begin_src emacs-lisp
-(use-package smart-mode-line
+(use-package telephone-line
   :config
-  (setq sml/shorten-directory t)
-  (setq sml/name-width 40)
-  (setq sml/mode-width 50))
-(use-package smart-mode-line-powerline-theme
-   :after smart-mode-line)
-(add-hook 'emacs-lisp-mode-hook
-   ( lambda()
-   (sml/setup)
-   (sml/apply-theme 'powerline)))
+    (setq telephone-line-lhs
+        '((evil   . (telephone-line-evil-tag-segment))
+            (accent . (telephone-line-vc-segment
+                    telephone-line-erc-modified-channels-segment
+                    telephone-line-process-segment))
+            (nil    . (telephone-line-minor-mode-segment
+                    telephone-line-buffer-segment))))
+    (setq telephone-line-rhs
+        '((nil    . (telephone-line-misc-info-segment))
+            (accent . (telephone-line-major-mode-segment))
+            (evil   . (telephone-line-airline-position-segment))))
+  :init
+    (telephone-line-mode 1))
 #+end_src
 
 * Language Server Protocol (LSP)
