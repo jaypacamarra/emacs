@@ -12,7 +12,6 @@
 - [[#all-the-icons][ALL THE ICONS]]
 - [[#navigation][NAVIGATION]]
   - [[#buffer-move][BUFFER-MOVE]]
-  - [[#ggtags][GGTAGS]]
 - [[#countel-tramp][COUNTEL-TRAMP]]
 - [[#company][COMPANY]]
 - [[#diminish][DIMINISH]]
@@ -329,19 +328,6 @@ one, an error is signaled."
       (select-window other-win))))
 #+end_src
 
-** GGTAGS
-#+begin_src emacs-lisp
-(use-package ggtags)
-(add-hook 'c-mode-common-hook
-          (lambda ()
-            (when (derived-mode-p 'c-mode 'c-ts-mode 'c-or-c++-ts-mode 'c++-mode 'java-mode)
-              (ggtags-mode 1))))
-#+end_src
-
-#+RESULTS:
-| lambda | nil | (when (derived-mode-p 'c-mode 'c-ts-mode 'c-or-c++-ts-mode 'c++-mode 'java-mode) (ggtags-mode 1))       |
-| lambda | nil | (if (derived-mode-p 'c-mode 'c-ts-mode 'c-or-c++-ts-mode 'c++-mode 'java-mode) (progn (ggtags-mode 1))) |
-
 * COUNTEL-TRAMP
 #+begin_src emacs-lisp
 (use-package counsel-tramp)
@@ -527,24 +513,26 @@ Let's make GNU Emacs look a little better.
 
 * Language Server Protocol (LSP)
 #+begin_src emacs-lisp
-;;(use-package lsp-mode
-;;  :init
-;;  ;; set prefix for lsp-command-keymap (few alternatives - "C-l", "C-c l")
-;;  (setq lsp-keymap-prefix "C-c l")
-;;  (setq lsp-headerline-breadcrumb-enable nil)
-;;  :hook (;; replace XXX-mode with concrete major-mode(e. g. python-mode)
-;;         (c-mode . lsp)
-;;         (c-ts-mode . lsp)
-;;         (c-or-c++-ts-mode . lsp)
-;;         (python . lsp)
-;;         (make . lsp)
-;;         ;; if you want which-key integration
-;;         (lsp-mode . lsp-enable-which-key-integration))
-;;  :commands lsp)
-;;;; if you are ivy user
-;;(use-package lsp-ivy :commands lsp-ivy-workspace-symbol)
-;;(use-package lsp-treemacs :commands lsp-treemacs-errors-list)
+(use-package lsp-mode
+  :init
+  ;; set prefix for lsp-command-keymap (few alternatives - "C-l", "C-c l")
+  (setq lsp-keymap-prefix "C-c l")
+  (setq lsp-headerline-breadcrumb-enable nil)
+  :hook (;; replace XXX-mode with concrete major-mode(e. g. python-mode)
+         (c-mode . lsp)
+         (c-ts-mode . lsp)
+         (c-or-c++-ts-mode . lsp)
+         (python . lsp)
+         (make . lsp)
+         ;; if you want which-key integration
+         (lsp-mode . lsp-enable-which-key-integration))
+  :commands lsp)
+;; if you are ivy user
+(use-package lsp-ivy :commands lsp-ivy-workspace-symbol)
+(use-package lsp-treemacs :commands lsp-treemacs-errors-list)
 #+end_src
+
+#+RESULTS:
 
 * GIT
 ** MAGIT
