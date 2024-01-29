@@ -9,6 +9,7 @@
   - [[#elpaca-package-manager][ELPACA PACKAGE MANAGER]]
   - [[#evil-mode][EVIL MODE]]
   - [[#general-keybindings][GENERAL KEYBINDINGS]]
+- [[#ai][AI]]
 - [[#additional-modes][ADDITIONAL MODES]]
 - [[#all-the-icons][ALL THE ICONS]]
 - [[#navigation][NAVIGATION]]
@@ -237,6 +238,7 @@
 (jay/leader-keys
   "o" '(:ignore t :wk "Open")    
   ;; Opening
+  "o c" '(chatgpt-shell :wk "Open chatgpt shell")
   "o p" '(org-open-at-point :wk "Open org link")
   "o t" '(vterm :wk "Open terminal"))
 
@@ -245,6 +247,20 @@
 #+end_src
 
 #+RESULTS:
+
+* AI
+CHATGPT
+#+begin_src emacs-lisp
+(use-package chatgpt-shell
+  :ensure t
+  :config
+    (setq chatgpt-shell-model-version 8) ;; gpt-3.5-turbo
+  :custom
+  ((chatgpt-shell-openai-key
+    (lambda ()
+      (auth-source-pass-get 'secret "openai-key")))))
+(setq chatgpt-shell-openai-key "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")
+#+end_src
 
 * ADDITIONAL MODES
 #+begin_src emacs-lisp
