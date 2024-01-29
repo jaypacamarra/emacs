@@ -1,0 +1,19 @@
+Jay's emacs config TODO
+
+[] change powerline colors to something better
+[x] bind leader+gg to magit
+[x] bind git timemachine bindings for toggle
+[x] bind evil-mode
+[x] remove carrot on M-x
+[x] bind counsel tramp
+[x] remove lsp header line
+
+[x] setup magit
+[x] setup counsel tramp (note tramp already installed in emacs)
+[x] make ESC binded to C g since it exits faster
+[] make wrap line default OFF (not sure how to do)
+[-] make make relative lines default on but toggle-able (NO MAKES THINGS LAGGY
+[-] add language support: c/c++/python/CMAKE/make
+[x] setup treesitter
+[x] setup lsp
+[x] bind leader+sb for searching the buffer
