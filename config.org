@@ -15,6 +15,7 @@
   - [[#buffer-move][BUFFER-MOVE]]
   - [[#projectile][PROJECTILE]]
 - [[#countel-tramp][COUNTEL-TRAMP]]
+- [[#clipboard][CLIPBOARD]]
 - [[#company][COMPANY]]
 - [[#diminish][DIMINISH]]
 - [[#flycheck][FLYCHECK]]
@@ -169,6 +170,7 @@
   "f r" '(counsel-recentf :wk "Find recent files")
   "f s" '(save-buffer :wk "File save")
   "f t" '(counsel-tramp :wk "File remote edit with tramp")
+  "f p" '(copy-buffer-directory-to-clipboard :wk "Copy current file path to clipboard")
   "TAB TAB" '(comment-line :wk "Comment lines"))
 
 (jay/leader-keys
@@ -347,6 +349,16 @@ one, an error is signaled."
 * COUNTEL-TRAMP
 #+begin_src emacs-lisp
 (use-package counsel-tramp)
+#+end_src
+
+* CLIPBOARD
+#+begin_src emacs-lisp
+(defun copy-buffer-directory-to-clipboard ()
+  "Copy the directory of the current buffer to the clipboard."
+  (interactive)
+  (let ((directory (file-name-directory (or buffer-file-name default-directory))))
+    (kill-new directory)
+    (message "Directory copied to clipboard: %s" directory)))
 #+end_src
 
 * COMPANY
