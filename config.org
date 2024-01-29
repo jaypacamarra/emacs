@@ -25,8 +25,8 @@
   - [[#dashboard][Dashboard]]
   - [[#disable-carrot-when-using-m-x][Disable carrot when using M-x]]
   - [[#disable-menubar-toolbars-and-scrollbars][Disable Menubar, Toolbars and Scrollbars]]
-  - [[#display-line-numbers-and-truncated-lines][Display Line Numbers and Truncated Lines]]
   - [[#ranger-as-default-file-navigator][Ranger as Default File Navigator]]
+  - [[#relative-line-numbers][Relative Line Numbers]]
   - [[#fuzzy-find-search][Fuzzy Find Search]]
   - [[#modeline][MODELINE]]
 - [[#language-server-protocol-lsp][Language Server Protocol (LSP)]]
@@ -176,13 +176,13 @@
 
 (jay/leader-keys
   "b" '(:ignore t :wk "buffer")
-  "bb" '(switch-to-buffer :wk "Switch buffer")
-  "be" '(evil-mode :wk "Buffer toggle evil mode")
-  "bi" '(ibuffer  :wk "Switch to iBuffer")
-  "bk" '(kill-this-buffer :wk "Kill this buffer")
-  "bn" '(next-buffer :wk "Next buffer")
-  "bp" '(previous-buffer :wk "Previous buffer")
-  "br" '(revert-buffer :wk "Reload buffer"))
+  "b b" '(switch-to-buffer :wk "Switch buffer")
+  "b e" '(evil-mode :wk "Buffer toggle evil mode")
+  "b i" '(ibuffer  :wk "Switch to iBuffer")
+  "b k" '(kill-this-buffer :wk "Kill this buffer")
+  "b n" '(next-buffer :wk "Next buffer")
+  "b p" '(previous-buffer :wk "Previous buffer")
+  "b r" '(revert-buffer :wk "Reload buffer"))
 
 (jay/leader-keys
   "e" '(:ignore t :wk "Evaluate")    
@@ -205,7 +205,7 @@
 
 (jay/leader-keys
   "t" '(:ignore t :wk "Toggle")
-  "t l" '(display-line-numbers-mode :wk "Toggle line numbers")
+  "t l" '(linum-relative-toggle :wk "Toggle relative line numbers")
   "t t" '(visual-line-mode :wk "Toggle truncated lines"))
 
 (jay/leader-keys
@@ -488,11 +488,6 @@ Let's make GNU Emacs look a little better.
 (scroll-bar-mode -1)
 #+end_src
 
-** Display Line Numbers and Truncated Lines
-#+begin_src emacs-lisp
-(global-display-line-numbers-mode 1)
-#+end_src
-
 ** Ranger as Default File Navigator
 #+begin_src emacs-lisp
 (use-package ranger
@@ -503,6 +498,17 @@ Let's make GNU Emacs look a little better.
   (setq ranger-parent-depth 1)
   (setq ranger-width-parents 0.20))
 #+end_src
+
+** Relative Line Numbers
+#+begin_src emacs-lisp
+(use-package linum-relative
+  :init 
+    (linum-relative-global-mode)
+    (add-hook 'dashboard-mode-hook (lambda () (linum-relative-mode 0))))
+
+#+end_src
+
+#+RESULTS:
 
 ** Fuzzy Find Search
 #+begin_src emacs-lisp
