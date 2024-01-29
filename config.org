@@ -12,6 +12,7 @@
 - [[#all-the-icons][ALL THE ICONS]]
 - [[#navigation][NAVIGATION]]
   - [[#buffer-move][BUFFER-MOVE]]
+  - [[#ggtags][GGTAGS]]
 - [[#countel-tramp][COUNTEL-TRAMP]]
 - [[#company][COMPANY]]
 - [[#diminish][DIMINISH]]
@@ -327,6 +328,19 @@ one, an error is signaled."
       (set-window-buffer other-win buf-this-buf)
       (select-window other-win))))
 #+end_src
+
+** GGTAGS
+#+begin_src emacs-lisp
+(use-package ggtags)
+(add-hook 'c-mode-common-hook
+          (lambda ()
+            (when (derived-mode-p 'c-mode 'c-ts-mode 'c-or-c++-ts-mode 'c++-mode 'java-mode)
+              (ggtags-mode 1))))
+#+end_src
+
+#+RESULTS:
+| lambda | nil | (when (derived-mode-p 'c-mode 'c-ts-mode 'c-or-c++-ts-mode 'c++-mode 'java-mode) (ggtags-mode 1))       |
+| lambda | nil | (if (derived-mode-p 'c-mode 'c-ts-mode 'c-or-c++-ts-mode 'c++-mode 'java-mode) (progn (ggtags-mode 1))) |
 
 * COUNTEL-TRAMP
 #+begin_src emacs-lisp
@@ -709,10 +723,17 @@ This is just an example of how to create a simple function in Emacs.  Use this f
 (global-font-lock-mode t)
 (setq font-lock-maximum-decoration t)
 (setq treesit-extra-load-path '(~/.config/emacs/tree-sitter))
+(setq major-mode-remap-alist
+ '((c-mode . c-or-c++-ts-mode)
+   (cpp-mode . c-or-c++-ts-mode)))
 (setq treesit-language-source-alist
       '((c "https://github.com/tree-sitter/tree-sitter-c.git")
         (cpp "https://github.com/tree-sitter/tree-sitter-cpp.git")))
+(setq treesit-font-lock-level 4)
 #+end_src
+
+#+RESULTS:
+: 4
 
 
 * TERMINALS
