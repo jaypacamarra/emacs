@@ -12,6 +12,7 @@
 - [[#all-the-icons][ALL THE ICONS]]
 - [[#navigation][NAVIGATION]]
   - [[#buffer-move][BUFFER-MOVE]]
+  - [[#projectile][PROJECTILE]]
 - [[#countel-tramp][COUNTEL-TRAMP]]
 - [[#company][COMPANY]]
 - [[#diminish][DIMINISH]]
@@ -226,7 +227,8 @@
   "s" '(:ignore t :wk "Searching")
   ;; Searching
   "s b" '(swiper :wk "Search buffer")
-  "s f" '(fzf-find-file :wk "Search file"))
+  "s f" '(fzf-find-file :wk "Search file")
+  "s p" '(counsel-git-grep :wk "Search project"))
 
 (jay/leader-keys
   "o" '(:ignore t :wk "Open")    
@@ -327,6 +329,13 @@ one, an error is signaled."
       ;; move this one to top
       (set-window-buffer other-win buf-this-buf)
       (select-window other-win))))
+#+end_src
+
+** PROJECTILE
+#+begin_src emacs-lisp
+(use-package projectile
+  :init
+    (projectile-mode t))
 #+end_src
 
 * COUNTEL-TRAMP
