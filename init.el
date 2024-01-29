@@ -1,3 +1,4 @@
+(setq inhibit-startup-screen t)
 (set-default 'truncate-lines t)
 ;;no backup files
 (setq make-backup-files nil)
