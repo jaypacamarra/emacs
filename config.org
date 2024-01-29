@@ -254,12 +254,8 @@ CHATGPT
 (use-package chatgpt-shell
   :ensure t
   :config
-    (setq chatgpt-shell-model-version 8) ;; gpt-3.5-turbo
-  :custom
-  ((chatgpt-shell-openai-key
-    (lambda ()
-      (auth-source-pass-get 'secret "openai-key")))))
-(setq chatgpt-shell-openai-key "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")
+    (setq chatgpt-shell-model-version 8)) ;; gpt-3.5-turbo
+(setq chatgpt-shell-openai-key "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")
 #+end_src
 
 * ADDITIONAL MODES
@@ -559,6 +555,7 @@ Let's make GNU Emacs look a little better.
   ;; set prefix for lsp-command-keymap (few alternatives - "C-l", "C-c l")
   (setq lsp-keymap-prefix "C-c l")
   (setq lsp-headerline-breadcrumb-enable nil)
+  (setq lsp-enable-on-type-formatting nil)
   :hook (;; replace XXX-mode with concrete major-mode(e. g. python-mode)
          (c-mode . lsp)
          (c-ts-mode . lsp)
@@ -649,7 +646,6 @@ Org-bullets gives us attractive bullets rather than asterisks.
 Org mode source blocks have some really weird and annoying default indentation behavior.  I think this has to do with electric-indent-mode, which is turned on by default in Emacs.  So let's turn it OFF!
 
 #+begin_src emacs-lisp
-(electric-indent-mode -1)
 (setq org-edit-src-content-indentation 0)
 #+end_src
 
