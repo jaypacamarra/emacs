@@ -9,6 +9,7 @@
   - [[#elpaca-package-manager][ELPACA PACKAGE MANAGER]]
   - [[#evil-mode][EVIL MODE]]
   - [[#general-keybindings][GENERAL KEYBINDINGS]]
+- [[#additional-modes][ADDITIONAL MODES]]
 - [[#all-the-icons][ALL THE ICONS]]
 - [[#navigation][NAVIGATION]]
   - [[#buffer-move][BUFFER-MOVE]]
@@ -162,7 +163,7 @@
 
 (jay/leader-keys
   "SPC" '(counsel-M-x :wk "Counsel M-x")
-  "." '(find-file :wk "Find file")
+  "." '(counsel-find-file :wk "Find file")
   "r" '(ranger :wk "Navigate files with ranger")
   "f c" '((lambda () (interactive) (find-file "~/.config/emacs/config.org")) :wk "Edit emacs config")
   "f r" '(counsel-recentf :wk "Find recent files")
@@ -241,6 +242,11 @@
 #+end_src
 
 #+RESULTS:
+
+* ADDITIONAL MODES
+#+begin_src emacs-lisp
+(use-package cmake-mode)
+#+end_src
 
 * ALL THE ICONS
 This is an icon set that can be used with dashboard, dired, ibuffer and other Emacs programs.
@@ -704,6 +710,7 @@ This is just an example of how to create a simple function in Emacs.  Use this f
    (cpp-mode . c-or-c++-ts-mode)))
 (setq treesit-language-source-alist
       '((c "https://github.com/tree-sitter/tree-sitter-c.git")
+        (cmake "https://github.com/uyha/tree-sitter-cmake.git")
         (cpp "https://github.com/tree-sitter/tree-sitter-cpp.git")))
 (setq treesit-font-lock-level 4)
 #+end_src
