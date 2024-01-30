@@ -391,17 +391,17 @@ Copy directory of project root to clipboard
 [[https://company-mode.github.io/][Company]] is a text completion framework for Emacs. The name stands for "complete anything".  Completion will start automatically after you type a few letters. Use M-n and M-p to select, <return> to complete or <tab> to complete the common 
 
 #+begin_src emacs-lisp
-;;(use-package company
-;;  :defer 2
-;;  :diminish
-;;  :custom
-;;  (company-begin-commands '(self-insert-command))
-;;  (company-idle-delay .1)
-;;  (company-minimum-prefix-length 2)
-;;  (company-show-numbers t)
-;;  (company-tooltip-align-annotations 't)
-;;  (global-company-mode t))
-;;
+(use-package company
+  :defer 2
+  :diminish
+  :custom
+  (company-begin-commands '(self-insert-command))
+  (company-idle-delay .1)
+  (company-minimum-prefix-length 2)
+  (company-show-numbers t)
+  (company-tooltip-align-annotations 't)
+  (global-company-mode t))
+
 ;;(use-package company-box
 ;;  :after company
 ;;  :diminish
