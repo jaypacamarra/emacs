@@ -1,6 +1,8 @@
 Jay's emacs config TODO
 
 [ ] Fix curcly brace weird behaviour
+[ ] Add copilot
+[X] Add binding to refresh buffer
 
 [-] change powerline colors to something better
 [x] bind leader+gg to magit

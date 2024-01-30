@@ -169,6 +169,7 @@
   "r" '(ranger :wk "Navigate files with ranger")
   "f c" '((lambda () (interactive) (find-file "~/.config/emacs/config.org")) :wk "Edit emacs config")
   "f r" '(counsel-recentf :wk "Find recent files")
+  "f R" '(revert-buffer-quick :wk "Refresh buffer")
   "f s" '(save-buffer :wk "File save")
   "f t" '(counsel-tramp :wk "File remote edit with tramp")
   "f p" '(copy-buffer-directory-to-clipboard :wk "Copy current file path to clipboard")
@@ -389,21 +390,21 @@ Copy directory of project root to clipboard
 [[https://company-mode.github.io/][Company]] is a text completion framework for Emacs. The name stands for "complete anything".  Completion will start automatically after you type a few letters. Use M-n and M-p to select, <return> to complete or <tab> to complete the common 
 
 #+begin_src emacs-lisp
-(use-package company
-  :defer 2
-  :diminish
-  :custom
-  (company-begin-commands '(self-insert-command))
-  (company-idle-delay .1)
-  (company-minimum-prefix-length 2)
-  (company-show-numbers t)
-  (company-tooltip-align-annotations 't)
-  (global-company-mode t))
-
-(use-package company-box
-  :after company
-  :diminish
-  :hook (company-mode . company-box-mode))
+;;(use-package company
+;;  :defer 2
+;;  :diminish
+;;  :custom
+;;  (company-begin-commands '(self-insert-command))
+;;  (company-idle-delay .1)
+;;  (company-minimum-prefix-length 2)
+;;  (company-show-numbers t)
+;;  (company-tooltip-align-annotations 't)
+;;  (global-company-mode t))
+;;
+;;(use-package company-box
+;;  :after company
+;;  :diminish
+;;  :hook (company-mode . company-box-mode))
 #+end_src
 
 * DIMINISH
