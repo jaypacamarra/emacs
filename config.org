@@ -241,6 +241,7 @@
   ;; Opening
   "o c" '(chatgpt-shell :wk "Open chatgpt shell")
   "o p" '(org-open-at-point :wk "Open org link")
+  "o s" '(scratch-buffer :wk "Open scratch buffer")
   "o t" '(vterm :wk "Open terminal"))
 
 )
