@@ -2,6 +2,8 @@
 (set-default 'truncate-lines t)
 ;;no backup files
 (setq make-backup-files nil)
+;;no lock files
+(setq create-lockfiles nil)
 ;;convert config.org into config.el
 (org-babel-load-file
   (expand-file-name

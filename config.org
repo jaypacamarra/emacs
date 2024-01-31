@@ -125,6 +125,7 @@
   :diminish
   :bind ("C-z" . evil-mode)
   :init				;; tweak evil's configuration before loading it
+  (setq evil-want-C-u-scroll t) ;; s0 vim C-u works
   (setq evil-want-integration t)	;; This is optional since it's already set to t by default.
   (setq evil-want-keybinding nil)
   (setq evil-vsplit-window-right t)
@@ -364,6 +365,8 @@ one, an error is signaled."
 * COUNTEL-TRAMP
 #+begin_src emacs-lisp
 (use-package counsel-tramp)
+;;custom ssh connections
+(setq counsel-tramp-custom-connections '(/ssh:dev@10.100.0.53:~/))
 #+end_src
 
 * CLIPBOARD
