@@ -366,7 +366,12 @@ one, an error is signaled."
 #+begin_src emacs-lisp
 (use-package counsel-tramp)
 ;;custom ssh connections
-(setq counsel-tramp-custom-connections '(/ssh:dev@10.100.0.53:~/))
+(setq counsel-tramp-custom-connections '(
+;; add custom connections here
+"/ssh:dev@10.100.0.10:~/"
+"/ssh:dev@10.100.0.53:~/"
+"/ssh:dev@10.100.0.60:~/"
+))
 #+end_src
 
 * CLIPBOARD
