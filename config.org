@@ -14,6 +14,7 @@
 - [[#all-the-icons][ALL THE ICONS]]
 - [[#navigation][NAVIGATION]]
   - [[#buffer-move][BUFFER-MOVE]]
+  - [[#directory-funs][DIRECTORY FUNS]]
   - [[#projectile][PROJECTILE]]
 - [[#countel-tramp][COUNTEL-TRAMP]]
 - [[#clipboard][CLIPBOARD]]
@@ -196,6 +197,10 @@
   "e r" '(eval-region :wk "Evaluate elisp in region")) 
 
 (jay/leader-keys
+  "d" '(:ignore t :wk "Directory")
+  "d w" '(go-work :wk "Jump to work directory"))
+
+(jay/leader-keys
   "g" '(:ignore t :wk "Git")
   "g m" '(git-timemachine-toggle :wk "Git timemachine")
   "g g" '(magit-status :wk "Magit"))
@@ -243,13 +248,12 @@
   "o c" '(chatgpt-shell :wk "Open chatgpt shell")
   "o p" '(org-open-at-point :wk "Open org link")
   "o s" '(scratch-buffer :wk "Open scratch buffer")
+  "o T" '(projectile-run-vterm-other-window :wk "Open other terminal")
   "o t" '(vterm :wk "Open terminal"))
 
 )
 
 #+end_src
-
-#+RESULTS:
 
 * AI
 CHATGPT
@@ -354,6 +358,17 @@ one, an error is signaled."
       (set-window-buffer other-win buf-this-buf)
       (select-window other-win))))
 #+end_src
+
+** DIRECTORY FUNS
+#+begin_src emacs-lisp
+(defun go-work()
+  "GO to work directory"
+  (interactive)
+  (dired "~/work/"))
+#+end_src
+
+#+RESULTS:
+: go-work
 
 ** PROJECTILE
 #+begin_src emacs-lisp
