@@ -133,6 +133,7 @@
   (setq evil-split-window-below t)
   (evil-mode))
 (use-package evil-collection
+  :diminish
   :after evil
   :config
   (setq evil-collection-mode-list '(dashboard dired ibuffer magit help))
@@ -174,6 +175,8 @@
   "f R" '(revert-buffer-quick :wk "Refresh buffer")
   "f s" '(save-buffer :wk "File save")
   "f t" '(counsel-tramp :wk "File remote edit with tramp")
+  "f o s" '(org-fold-show-subtree :wk "Org show subtree") ;;future jay make this toggle w TAB
+  "f o h" '(org-fold-hide-subtree :wk "Org hide subtree")
   "f p" '(copy-buffer-directory-to-clipboard :wk "Copy current file path to clipboard")
   "f P" '(copy-project-root-to-clipboard :wk "Copy project file path to clipboard")
   "TAB TAB" '(comment-line :wk "Comment lines"))
@@ -283,7 +286,6 @@ This is an icon set that can be used with dashboard, dired, ibuffer and other Em
 #+end_src
 
 * NAVIGATION
-
 ** BUFFER-MOVE
 Creating some functions to allow us to easily move windows (splits) around.  The following block of code was taken from buffer-move.el found on the EmacsWiki:
 https://www.emacswiki.org/emacs/buffer-move.el
@@ -373,6 +375,7 @@ one, an error is signaled."
 ** PROJECTILE
 #+begin_src emacs-lisp
 (use-package projectile
+  :diminish
   :init
     (projectile-mode t))
 #+end_src
@@ -539,6 +542,7 @@ Let's make GNU Emacs look a little better.
 ** Relative Line Numbers
 #+begin_src emacs-lisp
 (use-package linum-relative
+  :diminish
   :init 
     (linum-relative-global-mode)
     (add-hook 'dashboard-mode-hook (lambda () (linum-relative-mode 0))))
@@ -576,6 +580,7 @@ Let's make GNU Emacs look a little better.
 * Language Server Protocol (LSP)
 #+begin_src emacs-lisp
 (use-package lsp-mode
+  :diminish
   :init
   ;; set prefix for lsp-command-keymap (few alternatives - "C-l", "C-c l")
   (setq lsp-keymap-prefix "C-c l")
