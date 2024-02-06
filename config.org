@@ -16,6 +16,7 @@
   - [[#buffer-move][BUFFER-MOVE]]
   - [[#directory-funs][DIRECTORY FUNS]]
   - [[#projectile][PROJECTILE]]
+  - [[#winner-mode][WINNER MODE]]
 - [[#countel-tramp][COUNTEL-TRAMP]]
 - [[#clipboard][CLIPBOARD]]
 - [[#company][COMPANY]]
@@ -226,6 +227,9 @@
   "w n" '(evil-window-new :wk "New window")
   "w s" '(evil-window-split :wk "Horizontal split window")
   "w v" '(evil-window-vsplit :wk "Vertical split window")
+  "w f" '(delete-other-windows :wk "Focus on current window")
+  "w u" '(winner-undo :wk "Undo window configuration")
+  "w r" '(winner-redo :wk "Redo window configuration")
   ;; Window motions
   "w h" '(evil-window-left :wk "Window left")
   "w j" '(evil-window-down :wk "Window down")
@@ -380,12 +384,19 @@ one, an error is signaled."
     (projectile-mode t))
 #+end_src
 
+** WINNER MODE
+A global minor mode that allows you to undo or redo window configurations
+#+begin_src emacs-lisp
+(winner-mode 1)
+#+end_src
+
 * COUNTEL-TRAMP
 #+begin_src emacs-lisp
 (use-package counsel-tramp)
 ;;custom ssh connections
 (setq counsel-tramp-custom-connections '(
 ;; add custom connections here
+"/ssh:dev@10.100.0.8:~/"
 "/ssh:dev@10.100.0.10:~/"
 "/ssh:dev@10.100.0.53:~/"
 "/ssh:dev@10.100.0.60:~/"
@@ -777,11 +788,13 @@ This is just an example of how to create a simple function in Emacs.  Use this f
 (setq font-lock-maximum-decoration t)
 (setq treesit-extra-load-path '(~/.config/emacs/tree-sitter))
 (setq major-mode-remap-alist
- '((c-mode . c-or-c++-ts-mode)
+ '((yaml-mode . yaml-ts-mode)
+   (c-mode . c-or-c++-ts-mode)
    (cpp-mode . c-or-c++-ts-mode)))
 (setq treesit-language-source-alist
       '((c "https://github.com/tree-sitter/tree-sitter-c.git")
         (cmake "https://github.com/uyha/tree-sitter-cmake.git")
+        (yaml "https://github.com/ikatyang/tree-sitter-yaml")
         (cpp "https://github.com/tree-sitter/tree-sitter-cpp.git")))
 (setq treesit-font-lock-level 4)
 #+end_src
