@@ -258,7 +258,7 @@
   "o c" '(chatgpt-shell :wk "Open chatgpt shell")
   "o p" '(org-open-at-point :wk "Open org link")
   "o s" '(scratch-buffer :wk "Open scratch buffer")
-  "o t" '(vterm-toggle :wk "Open terminal"))
+  "o t" '(vterm-toggle-cd :wk "Open terminal"))
 )
 
 #+end_src
