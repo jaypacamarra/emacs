@@ -257,9 +257,7 @@
   "o c" '(chatgpt-shell :wk "Open chatgpt shell")
   "o p" '(org-open-at-point :wk "Open org link")
   "o s" '(scratch-buffer :wk "Open scratch buffer")
-  "o T" '(projectile-run-vterm-other-window :wk "Open other terminal")
-  "o t" '(vterm :wk "Open terminal"))
-
+  "o t" '(vterm-toggle :wk "Open terminal"))
 )
 
 #+end_src
@@ -825,4 +823,22 @@ This is just an example of how to create a simple function in Emacs.  Use this f
 * TERMINALS
 #+begin_src emacs-lisp
 (use-package vterm)
+(use-package vterm-toggle)
+(setq vterm-toggle-fullscreen-p nil)
+(setq vterm-toggle-reset-window-configration-after-exit t)
+(setq vterm-toggle-hide-method 'reset-window-configration)
+(setq vterm-toggle-fullscreen-p nil)
+(add-to-list 'display-buffer-alist
+             '((lambda (buffer-or-name _)
+                   (let ((buffer (get-buffer buffer-or-name)))
+                     (with-current-buffer buffer
+                       (or (equal major-mode 'vterm-mode)
+                           (string-prefix-p vterm-buffer-name (buffer-name buffer))))))
+                (display-buffer-reuse-window display-buffer-at-bottom)
+                ;;(display-buffer-reuse-window display-buffer-in-direction)
+                ;;display-buffer-in-direction/direction/dedicated is added in emacs27
+                ;;(direction . bottom)
+                ;;(dedicated . t) ;dedicated is supported in emacs27
+                (reusable-frames . visible)
+                (window-height . 0.3)))
 #+end_src
