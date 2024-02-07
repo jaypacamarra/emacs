@@ -171,11 +171,13 @@
   "SPC" '(counsel-M-x :wk "Counsel M-x")
   "." '(counsel-find-file :wk "Find file")
   "r" '(ranger :wk "Navigate files with ranger")
+  "f" '(:ignore t :wk "File")
   "f c" '((lambda () (interactive) (find-file "~/.config/emacs/config.org")) :wk "Edit emacs config")
   "f r" '(counsel-recentf :wk "Find recent files")
   "f R" '(revert-buffer-quick :wk "Refresh buffer")
   "f s" '(save-buffer :wk "File save")
   "f t" '(counsel-tramp :wk "File remote edit with tramp")
+  "f o" '(:ignore t :wk "Org")
   "f o s" '(org-fold-show-subtree :wk "Org show subtree") ;;future jay make this toggle w TAB
   "f o h" '(org-fold-hide-subtree :wk "Org hide subtree")
   "f p" '(copy-buffer-directory-to-clipboard :wk "Copy current file path to clipboard")
