@@ -522,7 +522,23 @@ Let's make GNU Emacs look a little better.
 ** Dashboard
 #+begin_src emacs-lisp
 (use-package dashboard
-  :ensure t
+  :ensure t 
+  :init
+  (setq initial-buffer-choice 'dashboard-open)
+  (setq dashboard-set-heading-icons t)
+  (setq dashboard-set-file-icons t)
+  (setq dashboard-banner-logo-title "Build robots or go home")
+  ;;(setq dashboard-startup-banner 'logo) ;; use standard emacs logo as banner
+  (setq dashboard-startup-banner "/home/jay/.config/emacs/logo/sai_logo_v2.png")  ;; use custom image as banner
+  (setq dashboard-center-content nil) ;; set to 't' for centered content
+  (setq dashboard-items '((recents . 5)
+                          (agenda . 5 )
+                          (bookmarks . 3)
+                          (projects . 3)
+                          (registers . 3)))
+  :custom
+  (dashboard-modify-heading-icons '((recents . "file-text")
+                                    (bookmarks . "book")))
   :config
   (dashboard-setup-startup-hook))
 #+end_src
@@ -601,6 +617,7 @@ Let's make GNU Emacs look a little better.
          (c-mode . lsp)
          (c-ts-mode . lsp)
          (c-or-c++-ts-mode . lsp)
+         (c++-mode . lsp)
          (python . lsp)
          (make . lsp)
          ;; if you want which-key integration
