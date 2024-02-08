@@ -30,6 +30,7 @@
   - [[#disable-menubar-toolbars-and-scrollbars][Disable Menubar, Toolbars and Scrollbars]]
   - [[#ranger-as-default-file-navigator][Ranger as Default File Navigator]]
   - [[#relative-line-numbers][Relative Line Numbers]]
+  - [[#ibuffer-auto-sort-to-filesprocesses][IBUFFER AUTO SORT TO FILES/PROCESSES]]
   - [[#fuzzy-find-search][Fuzzy Find Search]]
   - [[#modeline][MODELINE]]
   - [[#window-resizing-functions][WINDOW RESIZING FUNCTIONS]]
@@ -585,7 +586,11 @@ Let's make GNU Emacs look a little better.
 
 #+end_src
 
-#+RESULTS:
+** IBUFFER AUTO SORT TO FILES/PROCESSES
+#+begin_src emacs-lisp
+(setq ibuffer-default-sorting-mode "filename/process")
+(add-hook 'ibuffer-hook 'ibuffer-invert-sorting)
+#+end_src
 
 ** Fuzzy Find Search
 #+begin_src emacs-lisp
