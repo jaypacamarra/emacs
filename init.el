@@ -4,6 +4,10 @@
 (setq make-backup-files nil)
 ;;no lock files
 (setq create-lockfiles nil)
+;disable backup
+(setq backup-inhibited t)
+;disable auto save
+(setq auto-save-default nil)
 ;;convert config.org into config.el
 (org-babel-load-file
   (expand-file-name
