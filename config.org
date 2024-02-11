@@ -267,7 +267,8 @@
   "o c" '(chatgpt-shell :wk "Open chatgpt shell")
   "o p" '(org-open-at-point :wk "Open org link")
   "o s" '(scratch-buffer :wk "Open scratch buffer")
-  "o t" '(vterm-toggle-cd :wk "Open terminal"))
+  "o t" '(vterm-toggle :wk "Open terminal")
+  "o T" '(multi-vterm :wk "Open terminal in current buffer"))
 )
 
 #+end_src
@@ -863,6 +864,7 @@ This is just an example of how to create a simple function in Emacs.  Use this f
 #+begin_src emacs-lisp
 (use-package vterm)
 (use-package vterm-toggle)
+(use-package multi-vterm)
 (setq vterm-toggle-fullscreen-p nil)
 (setq vterm-toggle-reset-window-configration-after-exit t)
 (setq vterm-toggle-hide-method 'reset-window-configration)
