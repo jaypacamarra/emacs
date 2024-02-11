@@ -863,8 +863,8 @@ This is just an example of how to create a simple function in Emacs.  Use this f
 * TERMINALS
 #+begin_src emacs-lisp
 (use-package vterm)
-(use-package vterm-toggle)
 (use-package multi-vterm)
+(use-package vterm-toggle)
 (setq vterm-toggle-fullscreen-p nil)
 (setq vterm-toggle-reset-window-configration-after-exit t)
 (setq vterm-toggle-hide-method 'reset-window-configration)
