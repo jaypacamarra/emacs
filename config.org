@@ -15,6 +15,7 @@
 - [[#navigation][NAVIGATION]]
   - [[#buffer-move][BUFFER-MOVE]]
   - [[#directory-funs][DIRECTORY FUNS]]
+  - [[#neotree][NEOTREE]]
   - [[#projectile][PROJECTILE]]
   - [[#winner-mode][WINNER MODE]]
 - [[#countel-tramp][COUNTEL-TRAMP]]
@@ -140,7 +141,7 @@
   :diminish
   :after evil
   :config
-  (setq evil-collection-mode-list '(dashboard dired ibuffer magit help vterm))
+  (setq evil-collection-mode-list '(dashboard dired ibuffer magit help vterm neotree git-timemachine))
   (evil-collection-init))
 (use-package evil-tutor)
 
@@ -274,14 +275,6 @@
 #+end_src
 
 * AI
-CHATGPT
-#+begin_src emacs-lisp
-(use-package chatgpt-shell
-  :ensure t
-  :config
-    (setq chatgpt-shell-model-version 8)) ;; gpt-3.5-turbo
-(setq chatgpt-shell-openai-key "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")
-#+end_src
 
 * ADDITIONAL MODES
 #+begin_src emacs-lisp
@@ -387,6 +380,11 @@ one, an error is signaled."
 #+RESULTS:
 : go-work
 
+** NEOTREE
+#+begin_src emacs-lisp
+(use-package neotree)
+#+end_src
+
 ** PROJECTILE
 #+begin_src emacs-lisp
 (use-package projectile
@@ -444,10 +442,11 @@ Copy directory of project root to clipboard
   :diminish
   :custom
   (company-begin-commands '(self-insert-command))
-  (company-idle-delay .1)
+  (company-idle-delay 0)
   (company-minimum-prefix-length 2)
   (company-show-numbers t)
   (company-tooltip-align-annotations 't)
+  (company-dabbrev-downcase nil)
   (global-company-mode t))
 
 ;;(use-package company-box
@@ -651,6 +650,7 @@ Let's make GNU Emacs look a little better.
   (setq lsp-keymap-prefix "C-c l")
   (setq lsp-headerline-breadcrumb-enable nil)
   (setq lsp-enable-on-type-formatting nil)
+  (setq lsp-completion-enable-additional-text-edit nil)
   :hook (;; replace XXX-mode with concrete major-mode(e. g. python-mode)
          (c-mode . lsp)
          (c-ts-mode . lsp)
