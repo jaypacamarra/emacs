@@ -540,7 +540,7 @@ Let's make GNU Emacs look a little better.
   (setq dashboard-set-file-icons t)
   (setq dashboard-banner-logo-title "Build robots or go home")
   ;;(setq dashboard-startup-banner 'logo) ;; use standard emacs logo as banner
-  (setq dashboard-startup-banner "/home/jay/.config/emacs/logo/sai_logo_v2.png")  ;; use custom image as banner
+  (setq dashboard-startup-banner "~/.config/emacs/logo/sai_logo_v2.png")  ;; use custom image as banner
   (setq dashboard-center-content nil) ;; set to 't' for centered content
   (setq dashboard-items '((recents . 5)
                           (agenda . 5 )
