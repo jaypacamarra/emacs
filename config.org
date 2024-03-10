@@ -57,7 +57,7 @@
 * IMPORTANT PROGRAMS TO LOAD FIRST
 ** ELPACA PACKAGE MANAGER
 #+begin_src emacs-lisp
-  (defvar elpaca-installer-version 0.6)
+  (defvar elpaca-installer-version 0.7)
   (defvar elpaca-directory (expand-file-name "elpaca/" user-emacs-directory))
   (defvar elpaca-builds-directory (expand-file-name "builds/" elpaca-directory))
   (defvar elpaca-repos-directory (expand-file-name "repos/" elpaca-directory))
@@ -148,7 +148,7 @@
 ;;Turns off elpaca-use-package-mode current declaration
 ;;Note this will cause the declaration to be interpreted immediately (not deferred).
 ;;Useful for configuring built-in emacs features.
-(use-package emacs :elpaca nil :config (setq ring-bell-function #'ignore))
+;;(use-package emacs :elpaca nil :config (setq ring-bell-function #'ignore))
 
 ;; Don't install anything. Defer execution of BODY
 ;; (elpaca nil (message "deferred"))
@@ -673,7 +673,8 @@ Let's make GNU Emacs look a little better.
 ** MAGIT
 A git manager for the emacs user
 #+begin_src emacs-lisp
-(use-package magit)
+(use-package transient)
+(use-package magit :after transient)
 #+end_src
 
 ** GIT TIME MACHINE
@@ -875,7 +876,7 @@ This is just an example of how to create a simple function in Emacs.  Use this f
                    (let ((buffer (get-buffer buffer-or-name)))
                      (with-current-buffer buffer
                        (or (equal major-mode 'vterm-mode)
-                           (string-prefix-p vterm-buffer-name (buffer-name buffer))))))
+                           (string-prefix-p "vterm" (buffer-name buffer))))))
                 (display-buffer-reuse-window display-buffer-at-bottom)
                 ;;(display-buffer-reuse-window display-buffer-in-direction)
                 ;;display-buffer-in-direction/direction/dedicated is added in emacs27
